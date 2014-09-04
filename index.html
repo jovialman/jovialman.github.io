@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Jovialman.github.io by jovialman</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Jovialman.github.io</h1>
+          <h2>Learn to crunch data with R</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jovialman" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>
+<a name="exploratory-data-analysis-with-r" class="anchor" href="#exploratory-data-analysis-with-r"><span class="octicon octicon-link"></span></a>Exploratory Data Analysis with R</h3>
+
+<p>Exploratory data analysis(EDA) is an approach to data analysis for summarising and visualising the important characteristics of a data set. <a href="http://en.wikipedia.org/wiki/John_Tukey">John Tukey</a>, an American mathematician has contributed significantly to the development of EDA and was instrumental in distinguishing EDA from Confirmatory data analysis and Initial data analysis. He published a book, <a href="http://www.amazon.com/Exploratory-Data-Analysis-John-Tukey/dp/0201076160">Exploratory Data Analysis</a> in 1977 and introduced <a href="http://en.wikipedia.org/wiki/Box_plot">box plot</a>.</p>
+
+<p>In this post, we will cover the fundamentals of EDA using <a href="http://www.r-project.org/">R</a> and <a href="http://www.rstudio.com/">RStudio</a>. The R codes used in this tutorial can be found at <a href="https://github.com/jovialman/Exploratory-Data-Analysis">Github</a>. An accomapnying video has been uploaded on <a href="https://www.youtube.com/watch?v=AtYOUXeNhu0">Youtube</a>. The slides used in the video are available at <a href="https://rpubs.com/">RPubs</a>.</p>
+
+<ul>
+<li><a href="Overview%20&amp;%20Objectives">Overview &amp; Objectives</a></li>
+<li><a href="Types%20of%20EDA">Types of EDA</a></li>
+<li>
+<a href="Univariate">Univariate</a>
+
+<ul>
+<li><a href="Univariate%20Quantitative">Quantitative</a></li>
+<li><a href="Univariate%20Graphical">Graphical</a></li>
+</ul>
+</li>
+<li>
+<a href="Bivariate">Bivariate</a>
+
+<ul>
+<li><a href="Bivariate%20Quantitative">Quantitative</a></li>
+<li><a href="Bivariate%20Graphical">Graphical</a></li>
+</ul>
+</li>
+<li><a href="Case%20Study">Case Study</a></li>
+<li><a href="Resources">Resources</a></li>
+</ul><h5>
+<a name="overview--objectives" class="anchor" href="#overview--objectives"><span class="octicon octicon-link"></span></a>Overview &amp; Objectives</h5>
+
+<p>In simple terms, any method of analysing data that is not part of formal statistical modeling and inference falls into the category of exploratory data analysis. Before we build statistical models or do any other analysis, it is important to examine all the variables in our data set.</p>
+
+<p>Why?</p>
+
+<ul>
+<li>Discover any existing patterns </li>
+<li>Identify mistakes</li>
+<li>Suggest hypothesis that can be tested</li>
+<li>Check assumptions</li>
+<li>Identify relationships among explanatory variables</li>
+<li>Assess direction and size of relationship between expplanatory and outcome                      variables</li>
+</ul><p>It is not possible for us to determine the characterisits of data by looking at columns or a whole spreadsheet and this is when EDA comes to our aid. It is also important to keep in mind the problems with EDA:</p>
+
+<ul>
+<li>Does not have the same rigor of formal statistical techniques</li>
+<li>It cannot be used for prediction or inference</li>
+<li>Not efficient in case of voluminous data </li>
+</ul><p>In the next section, we look at the objectives of EDA.</p>
+
+<h5>
+<a name="types-of-eda" class="anchor" href="#types-of-eda"><span class="octicon octicon-link"></span></a>Types of EDA</h5>
+
+<p>EDA can be broadly classified into the following:</p>
+
+<ul>
+<li>Graphical or Quantitative </li>
+<li>Univariate or Bivariate</li>
+</ul><p>Quantitative methods include summary statisitcs while graphical methods include plots and charts. Univariate methods involve analysing one variable at a time while bivariate involves analysing two or more variables to examine their underlying relationships. EDA also depends on the role of variable being examined:</p>
+
+<ul>
+<li>Outcome variable</li>
+<li>Explanatory variable</li>
+</ul><p>Further division is based on the type of variable being examined:</p>
+
+<ul>
+<li>
+<p>Categorical variable</p>
+
+<ul>
+<li>Binary</li>
+<li>Ordinal</li>
+<li>Nominal</li>
+</ul>
+</li>
+<li>
+<p>Quantitative variable</p>
+
+<ul>
+<li>Discrete</li>
+<li>Continuous</li>
+</ul>
+</li>
+</ul><h5>
+<a name="univariate" class="anchor" href="#univariate"><span class="octicon octicon-link"></span></a>Univariate</h5>
+
+<h6>
+<a name="univariate-quantitative" class="anchor" href="#univariate-quantitative"><span class="octicon octicon-link"></span></a>Univariate Quantitative</h6>
+
+<p>Univariate analysis includes:</p>
+
+<h6>
+<a name="measures-of-central-tendancy" class="anchor" href="#measures-of-central-tendancy"><span class="octicon octicon-link"></span></a>Measures of central tendancy:</h6>
+
+<ul>
+<li>Mean</li>
+<li>Median</li>
+<li>Mode</li>
+</ul><h6>
+<a name="measures-of-dispersion" class="anchor" href="#measures-of-dispersion"><span class="octicon octicon-link"></span></a>Measures of dispersion:</h6>
+
+<ul>
+<li>Min</li>
+<li>Max</li>
+<li>Range</li>
+<li>Quartiles</li>
+<li>Variance</li>
+<li>Standard deviation</li>
+</ul><h6>
+<a name="other-measures-include" class="anchor" href="#other-measures-include"><span class="octicon octicon-link"></span></a>Other measures include:</h6>
+
+<ul>
+<li>Skewness</li>
+<li>Kurtosis</li>
+</ul><p>We will explore each of the above in detail in the <a href="Case%20Study">case study</a> provided at the end of this tutorial.</p>
+
+<h6>
+<a name="univariate-graphical" class="anchor" href="#univariate-graphical"><span class="octicon octicon-link"></span></a>Univariate Graphical</h6>
+
+<p>Graphical methods include the following:</p>
+
+<ul>
+<li>Histogram</li>
+<li>Box plots</li>
+<li>Bar plots</li>
+<li>Kernel density plots</li>
+</ul><h5>
+<a name="bivariate" class="anchor" href="#bivariate"><span class="octicon octicon-link"></span></a>Bivariate</h5>
+
+<h6>
+<a name="bivariate-quantitative" class="anchor" href="#bivariate-quantitative"><span class="octicon octicon-link"></span></a>Bivariate Quantitative</h6>
+
+<p>Bivariate analysis include:</p>
+
+<ul>
+<li>Crosstabs</li>
+<li>Covariance </li>
+<li>Correlation</li>
+</ul><p>Advanced techniques include:</p>
+
+<ul>
+<li>Cluster analysis</li>
+<li>Analysis of variance (ANOVA)</li>
+<li>Factor analysis</li>
+<li>Principal component analysis (PCA)</li>
+</ul><h6>
+<a name="bivariate-graphical" class="anchor" href="#bivariate-graphical"><span class="octicon octicon-link"></span></a>Bivariate Graphical</h6>
+
+<p>Graphical techniques include:</p>
+
+<ul>
+<li>Scatterplot</li>
+<li>Box plot</li>
+</ul><h4>
+<a name="case-study" class="anchor" href="#case-study"><span class="octicon octicon-link"></span></a>Case Study</h4>
+
+<p>In this case study, we will select a data set that has all the variable types discussed in <a href="Types%20of%20EDA">Types of EDA</a>. R has a lot of built-in data sets which come as part of the packages and can be used. We will use a data set from the <a href="https://archive.ics.uci.edu/ml/index.html">UCI Machine Learning Repository</a>. You can download the data set from <a href="https://archive.ics.uci.edu/ml/datasets/Bank+Marketing">here</a>. It is related to direct marketing campaigns of a Portugese Bank. The description of the data set can be found at the website. Please go through the tutorials on using <a href="add%20a%20link">RStudio</a> and <a href="add%20a%20link">Github</a> to better organise your analysis and pojects.</p>
+
+<p>Now, without further delay, let us begin our analysis.</p>
+
+<ul>
+<li>Step 1 : Create a new project in RStudio and name it <em>Exploratory Data Analysis</em>.</li>
+<li>Step 2 : Create a new R file and save it as <em>Codes</em>.</li>
+<li>Step 3 : Download the bank direct marketing data set from <a href="https://archive.ics.uci.edu/ml/datasets/Bank+Marketing">here</a>.</li>
+</ul><p>We have the data set in our project folder. Let us <em>EDA</em>:</p>
+
+<div class="highlight highlight-r"><pre><span class="c1"># check working directory</span>
+<span class="kp">getwd</span><span class="p">()</span>
+
+<span class="c1"># import the data set into the current workspace</span>
+data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">"bank-data.csv"</span><span class="p">,</span> header <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+
+<span class="c1"># let us explore the data set a bit</span>
+View<span class="p">(</span>data<span class="p">)</span>  <span class="c1"># allows us to view the data set</span>
+<span class="kp">names</span><span class="p">(</span>data<span class="p">)</span>  <span class="c1"># names of the variables </span>
+<span class="kp">dim</span><span class="p">(</span>data<span class="p">)</span>  <span class="c1"># dimension (number of rows and columns)</span>
+str<span class="p">(</span>data<span class="p">)</span>  <span class="c1"># structure of the data set</span>
+<span class="kp">class</span><span class="p">(</span>data<span class="p">)</span>  <span class="c1"># type of data</span>
+<span class="kp">head</span><span class="p">(</span>data<span class="p">,</span> n <span class="o">=</span> <span class="m">5</span><span class="p">)</span>  <span class="c1"># displays the first 5 rows </span>
+<span class="kp">tail</span><span class="p">(</span>data<span class="p">,</span> n <span class="o">=</span> <span class="m">5</span><span class="p">)</span>  <span class="c1"># displays the last 5 rows</span>
+</pre></div>
+
+<p>When we run str(data), R displays comprehensive information about the data set. It provides the following details:</p>
+
+<ul>
+<li>Type of data set: dataframe, vector, matrix, list</li>
+<li>Dimensions of the data set: Number of rows and columns</li>
+<li>Variable name</li>
+<li>Variable type: Factor, integer, numeric</li>
+</ul><p>We will select one variable from the data set for the following category of variables:</p>
+
+<ul>
+<li>
+<strong>Continuos</strong>: age</li>
+<li>
+<strong>Binary</strong>: housing</li>
+<li>
+<strong>Nominal</strong>: marital</li>
+<li>
+<strong>Ordinal</strong>: education</li>
+</ul><p>R has a wide range of built-in functions for summary statistics. Before we explore these functions, let us install the necessary <a href="add%20a%20link">packages</a> and load the libraries. Packages can be installed using install.packages() and loaded using library(). Install and load the following packages:</p>
+
+<ul>
+<li>install.packages("Hmisc")</li>
+<li>install.packages("pastecs")</li>
+<li>install.packages("psych")</li>
+</ul><div class="highlight highlight-r"><pre><span class="kn">library</span><span class="p">(</span>Hmisc<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>pastecs<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>psych<span class="p">)</span>
+</pre></div>
+
+<p>Let us run some codes and examine the output:</p>
+
+<div class="highlight highlight-r"><pre><span class="kp">summary</span><span class="p">(</span>data<span class="p">)</span>
+</pre></div>
+
+<p>Examining the output of the summary function, we can see that the result is different for continuos and categorical variables. For categorical variables, only the count of different levels is provided while for the continuos variables there are a bunch of statistics. Let us subset the data set by selecting the 4 variables mentioned earlier.</p>
+
+<div class="highlight highlight-r"><pre>var <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">"age"</span><span class="p">,</span> <span class="s">"marital"</span><span class="p">,</span> <span class="s">"education"</span><span class="p">,</span> <span class="s">"housing"</span><span class="p">)</span>
+eda_data <span class="o">&lt;-</span> data<span class="p">[</span>var<span class="p">]</span>
+<span class="kp">names</span><span class="p">(</span>eda_data<span class="p">)</span>
+</pre></div>
+
+<p>We have a new data set "eda_data" which we will use for the rest of the analysis. Let us do some univariate analysis on the "age" variable. We begin with quantitative techniques before exploring the graphical techniques.</p>
+
+<div class="highlight highlight-r"><pre><span class="kp">summary</span><span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">)</span>
+</pre></div>
+
+<p>The mean and median are pretty close and we can say that the distribution of the variable is approximately normal (we will test this with a graphical technique at a later stage). We will use the <strong>fivenum()</strong> function next. The fivenum() function displays the min, max, median, lower-hinge and upper-hinge values.</p>
+
+<div class="highlight highlight-r"><pre>fivenum<span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">)</span>
+</pre></div>
+
+<div class="highlight highlight-r"><pre>describe<span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">)</span>
+</pre></div>
+
+<p>The <strong>describe()</strong> function which is part of the <strong>Hmisc</strong> package displays the following additional statistics:</p>
+
+<ul>
+<li>Number of rows</li>
+<li>Standard deviation</li>
+<li>Trimmed mean</li>
+<li>Mean absolute deviation</li>
+<li>Skewness </li>
+<li>Kurtosis</li>
+<li>Standard error</li>
+</ul><div class="highlight highlight-r"><pre>stat.desc<span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">)</span>
+</pre></div>
+
+<p>The <strong>stat.desc()</strong> function which is part of the <strong>pastecs</strong> package displays the following additional statistics:</p>
+
+<ul>
+<li>Variance</li>
+<li>Coefficient of variation</li>
+<li>Confidence interval for mean</li>
+</ul><p>We now move on to the graphical techniques that can be employed for EDA and begin with the <strong>histogram</strong>. The <strong>age</strong> variables is positively <strong>skewed</strong> as we can see marginal frequency for age greater than 60.</p>
+
+<h4>
+<a name="histogram" class="anchor" href="#histogram"><span class="octicon octicon-link"></span></a>Histogram</h4>
+
+<div class="highlight highlight-r"><pre>hist<span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">,</span>
+     main <span class="o">=</span> <span class="s">"Histogram of Age"</span><span class="p">,</span>
+     xlab <span class="o">=</span> <span class="s">"Age in Years"</span><span class="p">)</span>
+</pre></div>
+
+<h4>
+<a name="boxplot" class="anchor" href="#boxplot"><span class="octicon octicon-link"></span></a>Boxplot</h4>
+
+<div class="highlight highlight-r"><pre>boxplot<span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">,</span>
+        main <span class="o">=</span> <span class="kp">toupper</span><span class="p">(</span><span class="s">"Boxplot of Age"</span><span class="p">),</span>
+        ylab <span class="o">=</span> <span class="s">"Age in years"</span><span class="p">,</span>
+        col <span class="o">=</span> <span class="s">"blue"</span><span class="p">)</span>
+</pre></div>
+
+<h4>
+<a name="kernel-density-plot" class="anchor" href="#kernel-density-plot"><span class="octicon octicon-link"></span></a>Kernel Density plot</h4>
+
+<div class="highlight highlight-r"><pre>d <span class="o">&lt;-</span> density<span class="p">(</span>eda_data<span class="o">$</span>age<span class="p">)</span>
+plot<span class="p">(</span>d<span class="p">,</span> main <span class="o">=</span> <span class="s">"Kernel density of Age"</span><span class="p">)</span>
+polygon<span class="p">(</span>d<span class="p">,</span> col <span class="o">=</span> <span class="s">"red"</span><span class="p">,</span> border <span class="o">=</span> <span class="s">"blue"</span><span class="p">)</span>
+</pre></div>
+        </section>
+
+        <footer>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
